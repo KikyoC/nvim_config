@@ -1,0 +1,5 @@
+{
+  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "nvim-tree.lua": { "branch": "master", "commit": "44d9b58f11d5a426c297aafd0be1c9d45617a849" },
+  "vim-nightfly-colors": { "branch": "master", "commit": "0f99d4278743cb246b6afa382f74adb1f3e7c2a0" }
+}
