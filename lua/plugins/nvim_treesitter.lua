@@ -1,13 +1,16 @@
 return {
-    --[[ 'nvim-treesitter/nvim-treesitter', ]]
-
-    --[[ build = ':TSUpdate', ]]
-    --[[ event = { 'BufReadPost', 'BufNewFile' }, ]]
-    --[[ dependencies = { ]]
-        --[[ 'nvim-treesitter/nvim-treesitter-textobjects', ]]
-        --[[ 'JoosepAlviste/nvim-ts-context-commentstring', ]]
-        --[[ 'nvim-treesitter/nvim-treesitter-refactor', ]]
-        --[[ 'windwp/nvim-ts-autotag', ]]
-        --[[ 'nvim-treesitter/playground', ]]
-    --[[ }, ]]
+	{
+	    'nvim-treesitter/nvim-treesitter',
+		lazy = false,
+        config = function()
+			require('nvim-treesitter.configs').setup {
+				ensure_installed = { "c", "lua", "python" ,"css", "cpp", "javascript", "html" },
+				auto_install = true,
+				highlights = {
+					enable = true,
+				},
+				indent = { enable = true },
+			}
+		end,
+	}
 }
