@@ -7,7 +7,7 @@ return {
         -- Fonction qui définit les remappings
         local function my_on_attach(bufnr)
             local api = require("nvim-tree.api")
-            local view = require("nvim-tree.view")
+            -- local view = require("nvim-tree.view")
 
             local function opts(desc)
                 return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -24,18 +24,14 @@ return {
 
             -- Remaps pour ajuster dynamiquement la largeur
             vim.keymap.set("n", "<C-Right>", function()
-                if view.is_visible() then
-                    local width = view.View.width
-                    view.View.width = width + 5 -- Augmente de 5 colonnes
-                    view.resize()
+                if api.tree.is_visible() then
+                    api.tree.resize({ relative = 5})
                 end
             end, opts("Increase Width"))
 
             vim.keymap.set("n", "<C-Left>", function()
-                if view.is_visible() then
-                    local width = view.View.width
-                    view.View.width = math.max(width - 5, 10) -- Diminue de 5 colonnes, minimum 10
-                    view.resize()
+                if api.tree.is_visible() then
+                    api.tree.resize({ relative = -5 })
                 end
             end, opts("Decrease Width"))
         end
@@ -62,9 +58,11 @@ return {
 
         -- Fonction pour basculer entre `nvim-tree` et la fenêtre de code
         local function toggle_focus()
-            local view = require("nvim-tree.view")
-            if view.is_visible() then
-                if vim.api.nvim_get_current_win() == view.get_winnr() then
+
+            local api = require("nvim-tree.api")
+                        -- local view = require("nvim-tree.view")
+            if api.tree.is_visible() then
+                if vim.api.nvim_get_current_win() == api.tree.winid then
                     -- Si `nvim-tree` est actif, passe à la fenêtre de code
                     vim.cmd("wincmd l")
                 else
