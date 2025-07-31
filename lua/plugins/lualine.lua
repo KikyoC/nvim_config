@@ -10,13 +10,14 @@ return {
                 component_separators = { left = '', right = '' },
             },
             sections = {
-                lualine_a = { 'mode' },
+                lualine_a = { 'mode', 'error', 'warn', 'info', ''},
                 lualine_b = { 'branch', 'diff' },
                 lualine_c = { 'filename' },
                 lualine_x = { 'encoding', 'fileformat', 'filetype' },
                 lualine_y = { 'progress' },
                 lualine_z = { 'location' },
             },
+			symbols = {error = 'K', warn = 'W', info = 'I', hint = 'H'},
             inactive_sections = {
                 lualine_a = {},
                 lualine_b = {},
